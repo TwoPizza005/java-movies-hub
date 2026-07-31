@@ -54,6 +54,7 @@ class MoviesApiTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         assertEquals(200, response.statusCode());
+        assertEquals("application/json; charset=UTF-8", response.headers().firstValue("Content-Type").orElse(""));
         List<Movie> movies = gson.fromJson(response.body(), new ListOfMoviesTypeToken().getType());
         assertTrue(movies.isEmpty());
     }
@@ -70,6 +71,7 @@ class MoviesApiTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         assertEquals(200, response.statusCode());
+        assertEquals("application/json; charset=UTF-8", response.headers().firstValue("Content-Type").orElse(""));
         List<Movie> movies = gson.fromJson(response.body(), new ListOfMoviesTypeToken().getType());
         assertEquals(2, movies.size());
         assertTrue(movies.stream().anyMatch(m -> "Inception".equals(m.getNameMovie())));
@@ -88,6 +90,7 @@ class MoviesApiTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         assertEquals(201, response.statusCode());
+        assertEquals("application/json; charset=UTF-8", response.headers().firstValue("Content-Type").orElse(""));
         Movie saved = gson.fromJson(response.body(), Movie.class);
         assertNotNull(saved.getId());
         assertEquals("The Matrix", saved.getNameMovie());
@@ -180,6 +183,7 @@ class MoviesApiTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         assertEquals(200, response.statusCode());
+        assertEquals("application/json; charset=UTF-8", response.headers().firstValue("Content-Type").orElse(""));
         Movie movie = gson.fromJson(response.body(), Movie.class);
         assertEquals(saved.getId(), movie.getId());
         assertEquals("Avatar", movie.getNameMovie());
@@ -265,6 +269,7 @@ class MoviesApiTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         assertEquals(200, response.statusCode());
+        assertEquals("application/json; charset=UTF-8", response.headers().firstValue("Content-Type").orElse(""));
         List<Movie> movies = gson.fromJson(response.body(), new ListOfMoviesTypeToken().getType());
         assertEquals(2, movies.size());
         assertTrue(movies.stream().allMatch(m -> m.getYear() == 2000));
@@ -281,6 +286,7 @@ class MoviesApiTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         assertEquals(200, response.statusCode());
+        assertEquals("application/json; charset=UTF-8", response.headers().firstValue("Content-Type").orElse(""));
         List<Movie> movies = gson.fromJson(response.body(), new ListOfMoviesTypeToken().getType());
         assertTrue(movies.isEmpty());
     }

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class MoviesServer {
-    private MoviesStore store;
+    private final MoviesStore store;
     private final int port;
     private HttpServer httpServer;
 
@@ -17,8 +17,8 @@ public class MoviesServer {
     }
 
     public void start() throws IOException {
-        HttpServer httpServer = HttpServer.create(new InetSocketAddress(port), 0);
-        httpServer.createContext("/movies", new BaseHttpHandler(store));
+        httpServer = HttpServer.create(new InetSocketAddress(port), 0);
+        httpServer.createContext("/movies", new MoviesHandler(store));
         httpServer.start();
     }
 

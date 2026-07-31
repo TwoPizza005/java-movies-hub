@@ -34,7 +34,6 @@ public class MoviesStore {
         return movies.remove(id) != null;
     }
 
-    // Для тестов – очищает хранилище и сбрасывает счётчик
     public void clear() {
         movies.clear();
         nextId = 1;

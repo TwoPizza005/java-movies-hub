@@ -14,7 +14,7 @@ public class Movie {
     public Movie() {
     }
 
-    // Геттеры и сеттеры
+
     public String getNameMovie() {
         return nameMovie;
     }
