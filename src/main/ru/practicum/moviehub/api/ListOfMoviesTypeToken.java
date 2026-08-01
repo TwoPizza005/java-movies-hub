@@ -1,4 +1,4 @@
-package ru.practicum.moviehub.http;
+package ru.practicum.moviehub.api;
 
 import com.google.gson.reflect.TypeToken;
 import ru.practicum.moviehub.model.Movie;
